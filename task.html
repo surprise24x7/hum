@@ -1,0 +1,220 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share and Earn</title>
+    <meta content='noindex,follow' name='googlebot' />
+    <meta content='noindex,nofollow,noodp,noydir' name='robots' />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            max-width: 120px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #8C52FF;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        .submit-section {
+            background-color: #8C52FF;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .submit-section a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+            color: #888;
+        }
+
+        footer a {
+            color: #8C52FF;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .button, #claim, #verify {
+            background: #4ab115;
+            border-radius: 10px;
+            width: 80%;
+            line-height: 45px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            margin: 20px auto;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .verifying {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #8C52FF;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            .button, #claim, #verify {
+                width: 100%;
+            }
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="container">
+        <main>
+            <h2>Step 2: Share on WhatsApp</h2>
+            <p>Click the "WhatsApp" button below to share about us.</p>
+            <div id="share-section">
+                <div class="button" id="whatsapp">Share on WhatsApp&nbsp; →</div>
+                <h4 id="share-instructions" class="textlastup">Share 33 times to proceed to verification.</h4>
+                <div id="verify" class="button hidden">Verify Share</div>
+                <div class="verifying" id="verifying-animation">Verifying...</div>
+            </div>
+            <a href="https://acrelicenseblown.com/agyv7ex6?key=96eb9366cb1c6c1b8ab6ab46c574e6fb">
+                <div id="claim" class="hidden">
+                    Continue
+                </div>
+            </a>
+        </main>
+        <footer>
+            <p>© Share and Earn 2024. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        var shareCount = parseInt(localStorage.getItem('shareCount') || '0');
+
+        $(document).ready(function() {
+            updateShareInstructions();
+
+            $("#whatsapp").click(function() {
+                window.open('whatsapp://send?text=*✨Work%20From%20Home✨*%0A%0A*✅Work%20on%20a%20mobile%20device%20or%20a%20laptop.*%0A%0A*✅Starting%20salary%2033k%20per%20month.*%0A%0A*✅Zero%20investment.*%0A%0A*✅2-3%20hours%20of%20work%20per%20day.*%0A%0A*Register%20Now%20👇👇👇*%0A%0Ahttps%3A%2F%2Fjobs11.z0q.xyz%2Fregister');
+                incrementShareCount();
+            });
+
+            $("#verify").click(function() {
+                $("#verifying-animation").show();
+                setTimeout(function() {
+                    $("#verifying-animation").hide();
+                    $("#verify").addClass('hidden'); // Hide the Verify Share button
+                    $("#claim").removeClass('hidden');
+                }, 2000);
+            });
+        });
+
+        function incrementShareCount() {
+            if (shareCount < 33) {
+                shareCount += 1;
+                localStorage.setItem('shareCount', shareCount);
+                showVerifyingAnimation();
+            }
+        }
+
+        function showVerifyingAnimation() {
+            $("#verifying-animation").show().text('Verifying share #' + shareCount + '...');
+            setTimeout(function() {
+                $("#verifying-animation").hide();
+                updateShareInstructions();
+                if (shareCount >= 33) {
+                    $("#verify").removeClass('hidden');
+                    $("#whatsapp").addClass('hidden');
+                }
+            }, 2000);
+        }
+
+        function updateShareInstructions() {
+            if (shareCount < 33) {
+                $("#share-instructions").text('Share ' + (33 - shareCount) + ' more times to proceed.');
+            } else {
+                $("#share-instructions").text('Click "Verify Share" to continue.');
+            }
+        }
+    </script>
+</body>
+</html>
